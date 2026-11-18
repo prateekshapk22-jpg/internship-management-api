@@ -1,10 +1,10 @@
 # Internship Management REST API
 
-A RESTful API built using **Node.js, Express.js, and SQLite** to manage internship records. This project demonstrates backend development concepts, CRUD operations, input validation, pagination, and persistent database storage.
+A secure RESTful API developed using **Node.js, Express.js, and SQLite** to manage internship records. This project demonstrates backend development, CRUD operations, input validation, pagination, database integration, and API security.
 
 ## Project Overview
 
-The Internship Management REST API allows users to create, retrieve, update, and delete internship records through HTTP requests. It uses SQLite for persistent data storage.
+The Internship Management REST API allows users to create, retrieve, update, and delete internship records through HTTP requests. It uses SQLite for persistent data storage and implements security middleware to protect API endpoints.
 
 ## Technologies Used
 
@@ -12,18 +12,31 @@ The Internship Management REST API allows users to create, retrieve, update, and
 - **Express.js** – Backend web framework
 - **SQLite** – Relational database
 - **JavaScript** – Programming language
-- **REST API** – API architecture
+- **Zod** – Input validation
+- **Helmet** – HTTP security headers
+- **CORS** – Cross-Origin Resource Sharing
+- **Express Rate Limit** – API request limiting
 
 ## Features
 
+### Core Functionality
 - Create new internship records
 - Retrieve all internship records
 - Retrieve a specific internship by ID
 - Update existing internship details
 - Delete internship records
-- Validate required input fields
+- Validate input fields
 - Support pagination using page and limit parameters
 - Store data persistently using SQLite
+
+### Security Features
+- Helmet security headers
+- CORS origin restrictions
+- API rate limiting (100 requests per 15 minutes)
+- JSON request body size restriction (10 KB)
+- Zod-based input validation
+- Centralized error handling
+- Parameterized SQL queries
 
 ## Project Structure
 
@@ -43,7 +56,7 @@ internship-management-api/
 └── README.md
 ```
 
-The SQLite database file is generated locally and is excluded from Git tracking.
+The SQLite database file is generated locally and excluded from Git tracking.
 
 ## Installation and Setup
 
@@ -68,10 +81,16 @@ npm install
 ### 4. Start the server
 
 ```bash
-node index.js
+npm start
 ```
 
-The server will run at:
+For development with automatic restarts:
+
+```bash
+npm run dev
+```
+
+The server runs at:
 
 ```text
 http://localhost:3000
@@ -115,9 +134,22 @@ GET /api/internships?page=1&limit=2
 }
 ```
 
+## Security Testing
+
+The following security features were tested:
+
+| Security Test | Expected Result | Status |
+|---|---|---|
+| Helmet headers | Security headers present | Passed |
+| Unauthorized CORS origin | HTTP 403 | Passed |
+| Oversized JSON request | HTTP 413 | Passed |
+| Rate limiting | HTTP 429 | Passed |
+| Invalid input validation | HTTP 400 | Passed |
+
 ## Author
 
 **Prateeksha Prabhu**
 
 B.E. Computer Science and Engineering (IoT)
 
+Sri Krishna College of Engineering and Technology
