@@ -1,17 +1,21 @@
-# Internship Management REST API
+# Internship Management Portal & REST API
 
-A secure RESTful API developed using **Node.js, Express.js, and SQLite** to manage internship records. This project demonstrates backend development, CRUD operations, input validation, pagination, database integration, and API security.
+A full-stack Internship Management Portal developed using **Node.js, Express.js, SQLite, HTML, CSS, and JavaScript**. The application allows users to manage internship records through a web interface and RESTful API.
 
 ## Project Overview
 
-The Internship Management REST API allows users to create, retrieve, update, and delete internship records through HTTP requests. It uses SQLite for persistent data storage and implements security middleware to protect API endpoints.
+The Internship Management Portal provides functionality to create, view, search, update, and delete internship records. It integrates a frontend interface with a Node.js backend and SQLite database.
+
+The project demonstrates full-stack development, CRUD operations, database integration, input validation, pagination, and API security.
 
 ## Technologies Used
 
 - **Node.js** – JavaScript runtime environment
 - **Express.js** – Backend web framework
 - **SQLite** – Relational database
-- **JavaScript** – Programming language
+- **JavaScript** – Application functionality
+- **HTML5** – Frontend structure
+- **CSS3** – Frontend styling
 - **Zod** – Input validation
 - **Helmet** – HTTP security headers
 - **CORS** – Cross-Origin Resource Sharing
@@ -19,23 +23,29 @@ The Internship Management REST API allows users to create, retrieve, update, and
 
 ## Features
 
-### Core Functionality
-- Create new internship records
-- Retrieve all internship records
-- Retrieve a specific internship by ID
-- Update existing internship details
+### Frontend Features
+- Dashboard for managing internships
+- Add new internship records
+- View internship details
+- Edit existing internship records
 - Delete internship records
-- Validate input fields
-- Support pagination using page and limit parameters
-- Store data persistently using SQLite
+- Search internship records
+- Form validation
+
+### Backend Features
+- RESTful API implementation
+- Create, Read, Update, and Delete (CRUD) operations
+- SQLite database integration
+- Input validation
+- Pagination support
+- Centralized error handling
 
 ### Security Features
 - Helmet security headers
 - CORS origin restrictions
-- API rate limiting (100 requests per 15 minutes)
-- JSON request body size restriction (10 KB)
+- API rate limiting
+- JSON request body size restriction
 - Zod-based input validation
-- Centralized error handling
 - Parameterized SQL queries
 
 ## Project Structure
@@ -46,8 +56,20 @@ internship-management-api/
 ├── database/
 │   └── db.js
 │
+├── public/
+│   ├── app.js
+│   ├── index.html
+│   └── style.css
+│
 ├── routes/
 │   └── internshipRoutes.js
+│
+├── screenshots/
+│   ├── 01-get-all-internships.png
+│   ├── 02-get-internship-by-id.png
+│   ├── 03-create-internship-post.png
+│   ├── 04-update-internship-put.png
+│   └── 05-delete-internship.png
 │
 ├── index.js
 ├── package.json
@@ -56,41 +78,39 @@ internship-management-api/
 └── README.md
 ```
 
-The SQLite database file is generated locally and excluded from Git tracking.
-
 ## Installation and Setup
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/prateekshapk22-jpg/internship-management-api.git
 ```
 
-### 2. Navigate to the project directory
+### 2. Navigate to the Project Directory
 
 ```bash
 cd internship-management-api
 ```
 
-### 3. Install dependencies
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Start the server
+### 4. Start the Application
 
 ```bash
 npm start
 ```
 
-For development with automatic restarts:
+For development:
 
 ```bash
 npm run dev
 ```
 
-The server runs at:
+The application runs at:
 
 ```text
 http://localhost:3000
@@ -100,7 +120,7 @@ http://localhost:3000
 
 | HTTP Method | Endpoint | Description |
 |---|---|---|
-| POST | `/api/internships` | Create a new internship |
+| POST | `/api/internships` | Create an internship |
 | GET | `/api/internships` | Retrieve all internships |
 | GET | `/api/internships/:id` | Retrieve an internship by ID |
 | PUT | `/api/internships/:id` | Update an internship |
@@ -108,9 +128,9 @@ http://localhost:3000
 
 ## Pagination
 
-The API supports pagination through query parameters.
+The API supports pagination using query parameters.
 
-**Example:**
+Example:
 
 ```http
 GET /api/internships?page=1&limit=2
@@ -136,7 +156,7 @@ GET /api/internships?page=1&limit=2
 
 ## Security Testing
 
-The following security features were tested:
+The following security tests were performed:
 
 | Security Test | Expected Result | Status |
 |---|---|---|
@@ -145,6 +165,10 @@ The following security features were tested:
 | Oversized JSON request | HTTP 413 | Passed |
 | Rate limiting | HTTP 429 | Passed |
 | Invalid input validation | HTTP 400 | Passed |
+
+## Database
+
+The application uses SQLite for persistent data storage. The database is generated locally by the application and excluded from Git tracking.
 
 ## Author
 
