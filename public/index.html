@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Internship Management Portal">
+    <title>Internship Management Portal</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">I</div>
+                <div>
+                    <h2>InternHub</h2>
+                    <small>MANAGEMENT PORTAL</small>
+                </div>
+            </div>
+
+            <p class="nav-heading">WORKSPACE</p>
+
+            <nav>
+                <a href="#dashboard" class="nav-link active">▦ Dashboard</a>
+                <a href="#internships" class="nav-link">▤ Internships</a>
+                <a href="#internship-form" class="nav-link">＋ Add Internship</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-dot"></div>
+                API Connection
+                <span id="connectionStatus">Checking...</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Internship Dashboard</h1>
+                    <p>Manage and monitor internship opportunities.</p>
+                </div>
+                <button class="refresh-btn" id="refreshBtn">↻ Refresh</button>
+            </header>
+
+            <section id="dashboard" class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">▤</div>
+                    <p>Total Internships</p>
+                    <h2 id="totalCount">0</h2>
+                    <small>All available records</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">⌖</div>
+                    <p>Companies</p>
+                    <h2 id="companyCount">0</h2>
+                    <small>Unique organizations</small>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">◷</div>
+                    <p>Locations</p>
+                    <h2 id="locationCount">0</h2>
+                    <small>Unique locations</small>
+                </div>
+            </section>
+
+            <section class="content-card" id="internship-form">
+                <div class="section-header">
+                    <div>
+                        <h2 id="formTitle">Add New Internship</h2>
+                        <p>Enter internship opportunity details.</p>
+                    </div>
+                    <span class="form-badge" id="formBadge">NEW ENTRY</span>
+                </div>
+
+                <form id="internshipForm">
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="title">Internship Title *</label>
+                            <input id="title" name="title" required maxlength="120"
+                                placeholder="Web Development Intern">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name *</label>
+                            <input id="company" name="company" required maxlength="120"
+                                placeholder="ABC Technologies">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input id="location" name="location" maxlength="120"
+                                placeholder="Coimbatore">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">Duration</label>
+                            <input id="duration" name="duration" maxlength="100"
+                                placeholder="3 Months">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stipend">Stipend</label>
+                            <input id="stipend" name="stipend" maxlength="100"
+                                placeholder="₹10,000/month">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="application_link">Application Link</label>
+                            <input id="application_link" name="application_link"
+                                type="url" maxlength="2048"
+                                placeholder="https://example.com/apply">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="eligibility">Eligibility</label>
+                            <textarea id="eligibility" name="eligibility"
+                                maxlength="2000" rows="2"
+                                placeholder="Eligibility requirements"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description"
+                                maxlength="5000" rows="3"
+                                placeholder="Internship description"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="primary-btn" id="submitBtn">
+                            + Add Internship
+                        </button>
+                        <button type="button" class="cancel-btn"
+                            id="cancelBtn" hidden>Cancel Edit</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="content-card" id="internships">
+                <div class="section-header listing-header">
+                    <div>
+                        <h2>Internship Opportunities</h2>
+                        <p>View, search, update and delete records.</p>
+                    </div>
+
+                    <input type="search" id="searchInput"
+                        class="search-input"
+                        placeholder="Search internships...">
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Internship</th>
+                                <th>Company</th>
+                                <th>Location</th>
+                                <th>Duration</th>
+                                <th>Stipend</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="internshipTable">
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    Loading internships...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-footer" id="recordCount">
+                    Showing 0 records
+                </div>
+            </section>
+
+            <footer>
+                Internship Management Portal · Node.js · Express · SQLite
+            </footer>
+
+        </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/app.js" defer></script>
+</body>
+</html>

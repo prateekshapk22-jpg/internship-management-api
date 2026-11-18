@@ -1,5 +1,6 @@
 
 const express = require('express');
+const path = require('path');
 const db = require('./database/db');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -20,7 +21,6 @@ const allowedOrigins = [
 
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow requests without an Origin header (e.g. Postman)
         if (!origin || allowedOrigins.includes(origin)) {
             return callback(null, true);
         }
@@ -49,15 +49,15 @@ const apiLimiter = rateLimit({
 
 app.use('/api', apiLimiter);
 
-// 5. Home route
+// 5. Serve frontend static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// 6. Home route - Display frontend
 app.get('/', (req, res) => {
-    res.status(200).json({
-        message: 'Internship Management API is running!',
-        status: 'Success'
-    });
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// 6. Health check
+// 7. Health check
 app.get('/api/health', (req, res) => {
     res.status(200).json({
         success: true,
@@ -65,7 +65,7 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-// 7. Test database connection
+// 8. Test database connection
 app.get('/api/test-db', (req, res) => {
     db.get('SELECT 1 AS result', (err, row) => {
         if (err) {
@@ -85,10 +85,10 @@ app.get('/api/test-db', (req, res) => {
     });
 });
 
-// 8. Internship CRUD routes
+// 9. Internship CRUD routes
 app.use('/api/internships', internshipRoutes);
 
-// 9. Handle unknown routes
+// 10. Handle unknown routes
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -96,7 +96,7 @@ app.use((req, res) => {
     });
 });
 
-// 10. Centralized error handler
+// 11. Centralized error handler
 app.use((err, req, res, next) => {
     console.error('Server error:', err.message);
 
@@ -115,7 +115,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-// 11. Start server
+// 12. Start server
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
