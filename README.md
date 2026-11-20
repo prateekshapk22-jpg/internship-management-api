@@ -130,7 +130,94 @@ http://localhost:3000
 ![Delete Internship](screenshots/05-delete-internship.png.png)
 
 ## Pagination
+## API Usage Examples
 
+### 1. Create an Internship (POST)
+
+**Request:**
+
+```http
+POST /api/internships
+Content-Type: application/json
+```
+
+**Request Body:**
+
+```json
+{
+  "title": "Data Science Intern",
+  "company": "Future Tech",
+  "location": "Remote",
+  "duration": "6 months",
+  "stipend": "15000"
+}
+```
+
+**Successful Response:**
+
+```json
+{
+  "message": "Internship added successfully!",
+  "internshipId": 5
+}
+```
+
+### 2. Get All Internships (GET)
+
+**Request:**
+
+```http
+GET /api/internships
+```
+
+**Response:**
+
+Returns a list of internship records along with pagination details, including page number, limit, total records, and total pages.
+
+### 3. Get Internship by ID (GET)
+
+**Request:**
+
+```http
+GET /api/internships/4
+```
+
+**Response:**
+
+Returns the internship record matching the specified ID.
+
+### 4. Update an Internship (PUT)
+
+**Request:**
+
+```http
+PUT /api/internships/5
+Content-Type: application/json
+```
+
+**Successful Response:**
+
+```json
+{
+  "message": "Internship updated successfully!"
+}
+```
+
+### 5. Delete an Internship (DELETE)
+
+**Request:**
+
+```http
+DELETE /api/internships/5
+```
+
+**Successful Response:**
+
+```json
+{
+  "message": "Internship deleted successfully!"
+}
+```
 The API supports pagination using query parameters.
 
 Example:
