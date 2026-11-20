@@ -79,7 +79,19 @@ internship-management-api/
 ```
 
 ## Installation and Setup
+## Prerequisites
 
+Before running the application, make sure you have installed:
+
+- **Node.js** – JavaScript runtime environment
+- **npm** – Node Package Manager
+
+To verify your installation, run:
+
+```bash
+node --version
+npm --version
+```
 ### 1. Clone the Repository
 
 ```bash
