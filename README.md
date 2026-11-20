@@ -79,7 +79,7 @@ internship-management-api/
 ```
 
 ## Installation and Setup
-## Prerequisites
+### Prerequisites
 
 Before running the application, make sure you have installed:
 
