@@ -118,13 +118,22 @@ http://localhost:3000
 
 ## API Endpoints
 
-| HTTP Method | Endpoint | Description |
-|---|---|---|
-| POST | `/api/internships` | Create an internship |
-| GET | `/api/internships` | Retrieve all internships |
-| GET | `/api/internships/:id` | Retrieve an internship by ID |
-| PUT | `/api/internships/:id` | Update an internship |
-| DELETE | `/api/internships/:id` | Delete an internship |
+## API Testing Screenshots
+
+### Get All Internships
+![Get All Internships](screenshots/01-get-all-internships.png)
+
+### Get Internship by ID
+![Get Internship by ID](screenshots/02-get-internship-by-id.png)
+
+### Create Internship
+![Create Internship](screenshots/03-create-internship-post.png)
+
+### Update Internship
+![Update Internship](screenshots/04-update-internship-put.png)
+
+### Delete Internship
+![Delete Internship](screenshots/05-delete-internship.png)
 
 ## Pagination
 
