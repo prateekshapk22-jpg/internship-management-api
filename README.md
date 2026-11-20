@@ -119,21 +119,15 @@ http://localhost:3000
 ## API Endpoints
 
 ## API Testing Screenshots
+![Get All Internships](screenshots/01-get-all-internships.png.png)
 
-### Get All Internships
-![Get All Internships](screenshots/01-get-all-internships.png)
+![Get Internship by ID](screenshots/02-get-internship-by-id.png.png)
 
-### Get Internship by ID
-![Get Internship by ID](screenshots/02-get-internship-by-id.png)
+![Create Internship](screenshots/03-create-internship-post.png.png)
 
-### Create Internship
-![Create Internship](screenshots/03-create-internship-post.png)
+![Update Internship](screenshots/04-update-internship-put.png.png)
 
-### Update Internship
-![Update Internship](screenshots/04-update-internship-put.png)
-
-### Delete Internship
-![Delete Internship](screenshots/05-delete-internship.png)
+![Delete Internship](screenshots/05-delete-internship.png.png)
 
 ## Pagination
 
